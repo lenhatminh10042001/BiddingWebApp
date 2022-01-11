@@ -17,7 +17,7 @@ router.get('/register', async function(req, res){
             }
         }
     }
-    res.render('vwAccount/register')
+    res.render('vWAccount/register')
 })
 //send email;
 
@@ -25,7 +25,8 @@ router.post('/register', async function(req, res){
 
     let newUserID = 0;
     const id_present = await accountModel.countUser();
-    let number = parseInt(id_present[0].NumberOfUser) + 1;
+    const stt = id_present.UserID.slice(1, 4);
+    let number = parseInt(stt) + 1;
     if ( number>= 100){
         newUserID = "U" + number
     }
